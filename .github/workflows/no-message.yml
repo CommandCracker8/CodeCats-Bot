@@ -34,6 +34,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: node index.js
-    - run: git commit -m "autorun database update"
-    - run: git remote set-url --push origin https://CommandCracker8:$GITHUB_TOKEN@github.com/CommandCracker8/CodeCats-Data-Grabber
-    - run: git push
+    - run: git config user.email "bunnybuffer1@gmail.com"
+    - run: git config user.name "CommandCracker8"
+    - run: git commit -m "Automatic database push"
+    - name: Automatically Push Database Updates
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
