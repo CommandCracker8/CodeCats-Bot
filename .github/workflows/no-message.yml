@@ -31,3 +31,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: node index.js
+    - run: git commit -m "autorun database update"
+    - run: git push
