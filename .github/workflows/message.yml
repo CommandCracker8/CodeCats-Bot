@@ -11,6 +11,7 @@ on:
   schedule:
     # Runs "At 07:00." (see https://crontab.guru)
     - cron: '0 7 * * *'
+  on_dispatch
 
 jobs:
   run:
