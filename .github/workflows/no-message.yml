@@ -4,6 +4,10 @@
 name: Node.js CI
 
 on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
   schedule:
     # Runs "At minute 0 past hour 0 and 12." (see https://crontab.guru)
     - cron: '0 0,12 * * *'
@@ -27,4 +31,3 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: node index.js
-    - run: ls
