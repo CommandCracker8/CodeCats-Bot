@@ -23,6 +23,9 @@ jobs:
         node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -32,4 +35,5 @@ jobs:
         cache: 'npm'
     - run: node index.js
     - run: git commit -m "autorun database update"
+    - run: git remote set-url --push origin https://CommandCracker8:$GITHUB_TOKEN@github.com/CommandCracker8/CodeCats-Data-Grabber
     - run: git push
