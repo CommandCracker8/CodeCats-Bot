@@ -17,6 +17,7 @@ To run the bot yourself, you need to do a few things.
 ##### If you want to have the bot send you a message and also run twice a day to store historical data, you must do the following:
 1. Fork this repository
 2. Replace **YOUR_EMAIL_HERE** in `.github/workflows/message.yml` and `.github/workflows/no-message.yml` with your github email
-3. That's all!
+3. Replace my user ID (`703303356361212014`) in `index.js` with your own
+4. That's all!
 
 ###### If you don't, just delete the `.github` folder!
