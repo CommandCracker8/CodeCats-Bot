@@ -42,7 +42,8 @@ function fetchData(callback) {
                         timestamp: Date.now(),
                         price: {
                             eth: jsonStats.thirty_day_average_price,
-                            gbp: pricePounds
+                            gbp: pricePounds,
+                            usd: priceDollars
                         },
                         stats: jsonStats,
                         timestampString: currentTime
