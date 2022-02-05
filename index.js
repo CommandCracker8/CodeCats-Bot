@@ -3,10 +3,9 @@ const fetch = require('node-fetch')
 const path = require('path')
 const { getEthPriceNow }= require('get-eth-price');
 var Datastore = require('nedb');
-const { exit } = require('process');
 require('dotenv').config()
 
-const client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS] });
+const client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.DIRECT_MESSAGES ] });
 const historyDB = new Datastore({ filename: path.join(__dirname, 'history.db'), autoload: true });
 
 function fetchData(callback) {
@@ -21,7 +20,7 @@ function fetchData(callback) {
                 .then( data => {
                     console.log(data)
                     console.log(`Current price of ETH in GBP: £${Object.values(data)[0].ETH.GBP}`)
-                    console.log(`Current price of ETH in USD: £${Object.values(data)[0].ETH.USD}`)
+                    console.log(`Current price of ETH in USD: $${Object.values(data)[0].ETH.USD}`)
 
                     const currentTime = new Date(Date.now()).toString()
                     const pricePounds = jsonStats.thirty_day_average_price * Object.values(data)[0].ETH.GBP
@@ -56,26 +55,21 @@ function fetchData(callback) {
         })
 }
 
-if (process.argv.slice(2)[0] == "--send-message") {
-    client.on('ready', () => {
-        console.log(`Logged in as ${client.user.tag}!`);
-            
-        if (process.argv.slice(2)[0] == "--send-message") {
-            fetchData(embed => {
-                client.users.fetch('703303356361212014', false).then((user) => {
-                    user.send({ embeds: [ embed ] }).then(message => {
-                        exit(0)
-                    })
-                });
-            })
-        }
-    });
+client.on('ready', () => {
+    console.log(`Logged in as ${client.user.tag}!`);
+});
+
+client.on('messageCreate', message => {
+    console.log(`${message.author.tag} sent message "${message.content}"`)
+
+    if (message.author.id == client.user.id)
+        return
     
-    client.on('message', message => {
-        console.log(`${message.author.tag} sent message "${message.content}"`)
-    });
-    
-    client.login(process.env.BOT_TOKEN);
-} else {
-    fetchData(() => {})
-}
+    if (message.content.toLowerCase() == "!grabstats") {
+        fetchData(embed => {
+            message.reply({ embeds: [ embed ] })
+        })
+    }
+});
+
+client.login(process.env.BOT_TOKEN);
