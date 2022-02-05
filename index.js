@@ -50,7 +50,7 @@ function fetchData(callback) {
                         
                     })
 
-                    callback(embed)
+                    callback(embed, jsonStats)
                 });
         })
 }
@@ -66,7 +66,11 @@ client.on('messageCreate', message => {
         return
     
     if (message.content.toLowerCase() == "!grabstats") {
-        fetchData(embed => {
+        fetchData((embed, jsonStats) => {
+            if (message.content.toLowerCase() == "!grabstats verbose") {
+                message.reply("```json\n" + JSON.stringify(jsonStats, null, 2) + "```")
+            }
+            
             message.reply({ embeds: [ embed ] })
         })
     }

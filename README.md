@@ -20,3 +20,8 @@ To run the bot yourself, you need to do a few things.
 3. That's all!
 
 ###### If you don't, just delete the `.github` folder!
+
+### Commands
+There are only 2 commands for this bot
+- `!grabstats`  The normal command that sends a nice embed
+- `!grabstats verbose`  Does the same as `!grabstats` but also sends the raw stats JSON
