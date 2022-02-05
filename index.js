@@ -64,7 +64,7 @@ client.on('messageCreate', message => {
 
     if (message.content.toLowerCase() == "!grabstats") {
         fetchData(embed => {
-            message.reply(embed)
+            message.reply({ embeds: [ embed ] })
         })
     }
 });
