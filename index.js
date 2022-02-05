@@ -62,6 +62,12 @@ client.on('ready', () => {
 
 client.on('message', message => {
     console.log(`${message.author.tag} sent message "${message.content}"`)
+
+    if (message.content.toLowerCase() == "!grabStats") {
+        fetchData(embed => {
+            message.reply(embed)
+        })
+    }
 });
 
 client.login(process.env.BOT_TOKEN);
