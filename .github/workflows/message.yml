@@ -26,6 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - run: npm i
     - run: node index.js --send-message
     - run: git add . # Commit the changed history.db file
     - run: git config user.email "YOUR_EMAIL_HERE"
