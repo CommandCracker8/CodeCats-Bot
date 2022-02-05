@@ -61,7 +61,7 @@ client.on('ready', () => {
 
 client.on('messageCreate', message => {
     console.log(`${message.author.tag} sent message "${message.content}"`)
-    console.log(message.author.id == client.user.id)
+    
     if (message.author.id == client.user.id)
         return
     
