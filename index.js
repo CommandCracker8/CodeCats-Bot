@@ -56,26 +56,20 @@ function fetchData(callback) {
         })
 }
 
-if (process.argv.slice(2)[0] == "--send-message") {
-    client.on('ready', () => {
-        console.log(`Logged in as ${client.user.tag}!`);
-            
-        if (process.argv.slice(2)[0] == "--send-message") {
-            fetchData(embed => {
-                client.users.fetch('703303356361212014', false).then((user) => {
-                    user.send({ embeds: [ embed ] }).then(message => {
-                        exit(0)
-                    })
-                });
+client.on('ready', () => {
+    console.log(`Logged in as ${client.user.tag}!`);
+        
+    fetchData(embed => {
+        client.users.fetch('703303356361212014', false).then((user) => {
+            user.send({ embeds: [ embed ] }).then(message => {
+                exit(0)
             })
-        }
-    });
-    
-    client.on('message', message => {
-        console.log(`${message.author.tag} sent message "${message.content}"`)
-    });
-    
-    client.login(process.env.BOT_TOKEN);
-} else {
-    fetchData(() => {})
-}
+        });
+    })
+});
+
+client.on('message', message => {
+    console.log(`${message.author.tag} sent message "${message.content}"`)
+});
+
+client.login(process.env.BOT_TOKEN);
