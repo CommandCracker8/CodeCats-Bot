@@ -5,7 +5,7 @@ const { getEthPriceNow }= require('get-eth-price');
 var Datastore = require('nedb');
 require('dotenv').config()
 
-const client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS] });
+const client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.DIRECT_MESSAGES ] });
 const historyDB = new Datastore({ filename: path.join(__dirname, 'history.db'), autoload: true });
 
 function fetchData(callback) {
