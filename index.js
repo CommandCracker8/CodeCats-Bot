@@ -60,10 +60,10 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('message', message => {
+client.on('messageCreate', message => {
     console.log(`${message.author.tag} sent message "${message.content}"`)
 
-    if (message.content.toLowerCase() == "!grabStats") {
+    if (message.content.toLowerCase() == "!grabstats") {
         fetchData(embed => {
             message.reply(embed)
         })
