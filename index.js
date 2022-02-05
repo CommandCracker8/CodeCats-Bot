@@ -20,7 +20,7 @@ function fetchData(callback) {
                 .then( data => {
                     console.log(data)
                     console.log(`Current price of ETH in GBP: £${Object.values(data)[0].ETH.GBP}`)
-                    console.log(`Current price of ETH in USD: £${Object.values(data)[0].ETH.USD}`)
+                    console.log(`Current price of ETH in USD: $${Object.values(data)[0].ETH.USD}`)
 
                     const currentTime = new Date(Date.now()).toString()
                     const pricePounds = jsonStats.thirty_day_average_price * Object.values(data)[0].ETH.GBP
@@ -61,7 +61,7 @@ client.on('ready', () => {
 
 client.on('messageCreate', message => {
     console.log(`${message.author.tag} sent message "${message.content}"`)
-    
+
     if (message.author.id == client.user.id)
         return
     
