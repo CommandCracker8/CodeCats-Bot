@@ -58,14 +58,6 @@ function fetchData(callback) {
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-        
-    fetchData(embed => {
-        client.users.fetch('703303356361212014', false).then((user) => {
-            user.send({ embeds: [ embed ] }).then(message => {
-                exit(0)
-            })
-        });
-    })
 });
 
 client.on('message', message => {
