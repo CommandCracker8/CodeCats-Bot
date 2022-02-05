@@ -27,8 +27,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: node index.js --send-message
-    - run: git add . 
-    - run: git config user.email "bunnybuffer1@gmail.com"
+    - run: git add . # Commit the changed history.db file
+    - run: git config user.email "YOUR_EMAIL_HERE"
     - run: git config user.name "CommandCracker8"
     - run: git commit -m "Automatic database push"
     - name: Automatically Push Database Updates

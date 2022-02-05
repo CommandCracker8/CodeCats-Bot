@@ -1,5 +1,5 @@
 {
-  "name": "codecats-data-grabber",
+  "name": "codecats-bot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,7 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0",
     "get-eth-price": "^1.0.0",
+    "logsplus": "^3.0.0",
     "nedb": "^1.8.0",
     "node-fetch": "^2.6.7"
   }
