@@ -3,7 +3,6 @@ const fetch = require('node-fetch')
 const path = require('path')
 const { getEthPriceNow }= require('get-eth-price');
 var Datastore = require('nedb');
-const { exit } = require('process');
 require('dotenv').config()
 
 const client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS] });
