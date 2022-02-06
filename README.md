@@ -25,3 +25,6 @@ To run the bot yourself, you need to do a few things.
 There are only 2 commands for this bot
 - `!grabstats`  The normal command that sends a nice embed
 - `!grabstats verbose`  Does the same as `!grabstats` but also sends the raw stats JSON
+
+#### Public Instance
+Click [here](https://discord.com/api/oauth2/authorize?client_id=836989800757329940&permissions=277025507328&scope=bot) to invite this bot to your server!
