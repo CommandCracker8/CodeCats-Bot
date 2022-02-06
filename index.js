@@ -74,6 +74,8 @@ client.on('messageCreate', message => {
             
             message.reply({ embeds: [ embed ] })
         })
+    } else if (message.content.toLowerCase() == "!invite") {
+        message.reply(process.env.INVITE_LINK)
     }
 });
 
