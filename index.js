@@ -66,7 +66,7 @@ client.on('messageCreate', message => {
     if (message.author.id == client.user.id)
         return
     
-    if (message.content.toLowerCase() == "!grabstats") {
+    if (message.content.toLowerCase() == "!grabstats" || message.content.toLowerCase() == "!grabstats verbose") {
         fetchData((embed, jsonStats) => {
             if (message.content.toLowerCase() == "!grabstats verbose") {
                 message.reply("```json\n" + JSON.stringify(jsonStats, null, 2) + "```")
